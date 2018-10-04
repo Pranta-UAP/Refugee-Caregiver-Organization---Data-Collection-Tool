@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+
+{% block body_block %}
+    <div class="jumbotron text-center">
+        {% if session.logged_in == NULL %}
+            <h1>Please Login</h1>
+            <p class="lead">If  you're an employee of RCO you can login with your official credentials.</p>
+            <a href="/register" class="btn btn-primary btn-lg">Register</a>
+            <a href="/login" class="btn btn-success btn-lg">Login</a>
+        {% else %}
+        <img src="{{url_for('static', filename='rco_logo.png')}}" alt="">
+            <h1>Welcome RCO employee</h1>
+            <hr>
+            <div class="row">
+                <div class="col-sm">
+                    <img class="img-thumbnail" src="{{url_for('static', filename='two.jpg')}}">
+                </div>
+                <div class="col-sm">
+                    <img class="img-thumbnail" src="{{url_for('static', filename='one.jpg')}}">
+                </div>
+                <div class="col-sm">
+                        <img class="img-thumbnail" src="{{url_for('static', filename='three.jpg')}}">
+                </div>
+            </div>
+            <hr>
+            <p class="lead">
+                In order to collect new data go to your <a href="/dashboard">Dashboard</a> or to view already collected data, go to <a href="/forms">Collected Data</a>.
+            </p>
+        {% endif %}
+    </div>
+{% endblock %}

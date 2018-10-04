@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand navbar-light bg-light" style="margin-bottom: 10px">
+    <a class="navbar-brand" href="/"> <img src="{{url_for('static', filename='rco_nav.png')}}" alt=""> Refugee Caregiver Organization</a>
+    
+    <div class="collapse navbar-collapse" id="navbar">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+            {#
+            <li class="nav-item">
+                <a class="nav-link" href="/about">About</a>
+            </li>
+            #}
+            <li class="nav-item">
+                <a class="nav-link" href="/forms">Collected Data</a>
+            </li>
+        </ul>
+
+        <ul class="navbar-nav navbar-right">
+                {% if session.logged_in %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/dashboard">Dashboard</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/register">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Login</a>
+                </li>
+                {% endif %}
+        </ul>
+    </div>
+</nav>

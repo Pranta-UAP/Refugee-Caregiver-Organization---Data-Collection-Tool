@@ -1,0 +1,34 @@
+{% extends 'layout.html' %} 
+
+{% block body_block %}
+<h1>Register</h1>
+
+<form action="" method="POST">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input class="form-control" type="text" name="name" id="name" placeholder="Your full name" required>
+    </div>
+    <div class="form-group">
+        <label for="official_id">Official ID</label>
+        <input class="form-control" type="text" name="official_id" id="official_id" placeholder="Your official identity number issued from RCO" required>
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input class="form-control" type="email" name="email" id="email" placeholder="Your valid email address" required>
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input class="form-control" type="password" name="password" id="password" placeholder="A strong password" required>
+    </div>
+    <div class="form-group">
+        <label for="password">Confirm Password</label>
+        <input class="form-control" type="password" name="confirm_password" id="confirm_password" placeholder="Repeat the same password" required>
+    </div>
+
+    <p>
+        <input type="submit" class="btn btn-primary" value="Submit">
+    </p>
+</form>
+
+<script src="{{url_for('static', filename='validation.js')}}"></script>
+{% endblock %}

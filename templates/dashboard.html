@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+
+{% block body_block %}
+    <h1>Dashboard <small>Welcome {{ session.username }}</small> </h1>
+    <hr>
+    <a href="/create_form" class="btn btn-success">Collect Data</a><br>
+
+    <hr>
+    <table class="table table-striped">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Origin</th>
+            <th>Contact Number</th>
+        </tr>
+        {% for rco_form in rco_forms %}
+            <tr>
+                <td>{{ rco_form.id }}</td>
+                <td>{{ rco_form.name }}</td>
+                <td>{{ rco_form.origin }}</td>
+                <td>{{ rco_form.number }}</td>
+                {# <td><a href="edit_form/{{ rco_form.id }}" class="btn btn-default float-right">Edit</a></td> #}
+                <td>
+                    <form action="{{  url_for('delete_form', id=rco_form.id) }}" method="POST">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="submit" value="Delete" class="btn btn-danger">
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <form action="{{ url_for('export_data') }}" method="POST">
+        <div class="form-group">
+            <label for="directory">Directory</label>
+            <input type="text" name="directory" id="directory" class="form-control" placeholder='Absolute path i.e. "D:\rco-files"' required>
+        </div>
+        <p>
+            <input class="btn btn-success" type="submit" value="Generate CSV Report">
+        </p>
+    </form>
+
+{% endblock %}
